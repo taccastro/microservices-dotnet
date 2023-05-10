@@ -1,12 +1,12 @@
 ﻿using System.Net.Http.Headers;
 using System.Text.Json;
 
-namespace GeekShopping.Web.Ultis
+namespace GeekShopping.Web.Utils
 {
     public static class HttpClientExtensions
     {
         private static MediaTypeHeaderValue contentType
-          = new MediaTypeHeaderValue("application/json");
+            = new MediaTypeHeaderValue("application/json");
         public static async Task<T> ReadContentAs<T>(
             this HttpResponseMessage response)
         {
@@ -41,6 +41,7 @@ namespace GeekShopping.Web.Ultis
             content.Headers.ContentType = contentType;
             return httpClient.PutAsync(url, content);
         }
+
 
     }
 }

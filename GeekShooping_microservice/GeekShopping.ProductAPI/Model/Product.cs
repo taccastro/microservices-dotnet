@@ -15,7 +15,7 @@ namespace GeekShopping.ProductAPI.Model
         [Column("price")]
         [Required]
         [Range(1, 10000)]
-        public decimal  Price { get; set; }
+        public decimal Price { get; set; }
 
         [Column("description")]
         [StringLength(500)]
@@ -23,7 +23,7 @@ namespace GeekShopping.ProductAPI.Model
 
         [Column("category_name")]
         [StringLength(50)]
-        public string Category_name { get; set; }
+        public string CategoryName { get; set; }
 
         [Column("image_url")]
         [StringLength(300)]
