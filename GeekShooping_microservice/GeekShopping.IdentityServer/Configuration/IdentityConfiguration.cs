@@ -1,5 +1,6 @@
-﻿using Duende.IdentityServer.Models;
-using Duende.IdentityServer;
+﻿using Duende.IdentityServer;
+using Duende.IdentityServer.Models;
+using System.Collections.Generic;
 
 namespace GeekShopping.IdentityServer.Configuration
 {
@@ -40,7 +41,7 @@ namespace GeekShopping.IdentityServer.Configuration
                     ClientSecrets = { new Secret("my_super_secret".Sha256())},
                     AllowedGrantTypes = GrantTypes.Code,
                     RedirectUris = {"https://localhost:4430/signin-oidc"},
-                    PostLogoutRedirectUris = {"https://localhost:4430/signout-oidc"},
+                    PostLogoutRedirectUris = {"https://localhost:4430/signout-callback-oidc"},
                     AllowedScopes = new List<string>
                     {
                         IdentityServerConstants.StandardScopes.OpenId,

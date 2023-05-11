@@ -4,6 +4,7 @@ using GeekShopping.IdentityServer.Configuration;
 using GeekShopping.IdentityServer.Initializer;
 using GeekShopping.IdentityServer.Model;
 using GeekShopping.IdentityServer.Model.Context;
+using GeekShopping.IdentityServer.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,7 +22,7 @@ namespace GeekShopping.IdentityServer
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connection = Configuration["MySQlConnection:MySQlConnectionString"];
+            var connection = Configuration["MySqlConnection:MySQlConnectionString"];
 
             services.AddDbContext<MySQLContext>(options => options.
                 UseMySql(connection,
@@ -33,20 +34,20 @@ namespace GeekShopping.IdentityServer
                 .AddDefaultTokenProviders();
 
             var builder = services.AddIdentityServer(options =>
-                {
-                    options.Events.RaiseErrorEvents = true;
-                    options.Events.RaiseInformationEvents = true;
-                    options.Events.RaiseFailureEvents = true;
-                    options.Events.RaiseSuccessEvents = true;
-                    options.EmitStaticAudienceClaim = true;
-                }).AddInMemoryIdentityResources(
+            {
+                options.Events.RaiseErrorEvents = true;
+                options.Events.RaiseInformationEvents = true;
+                options.Events.RaiseFailureEvents = true;
+                options.Events.RaiseSuccessEvents = true;
+                options.EmitStaticAudienceClaim = true;
+            }).AddInMemoryIdentityResources(
                         IdentityConfiguration.IdentityResources)
-                    .AddInMemoryApiScopes(IdentityConfiguration.ApiScopes)    
+                    .AddInMemoryApiScopes(IdentityConfiguration.ApiScopes)
                     .AddInMemoryClients(IdentityConfiguration.Clients)
                     .AddAspNetIdentity<ApplicationUser>();
 
             services.AddScoped<IDbInitializer, DbInitializer>();
-            //services.AddScoped<IProfileService, ProfileService>();
+            services.AddScoped<IProfileService, ProfileService>();
 
             builder.AddDeveloperSigningCredential();
 
@@ -54,7 +55,7 @@ namespace GeekShopping.IdentityServer
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, 
+        public void Configure(IApplicationBuilder app,
             IWebHostEnvironment env,
             IDbInitializer initializer
         )
