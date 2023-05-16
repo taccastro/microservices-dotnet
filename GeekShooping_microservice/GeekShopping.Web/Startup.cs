@@ -28,15 +28,17 @@ namespace GeekShopping.Web
             services.AddHttpClient<IProductService, ProductService>(c =>
                     c.BaseAddress = new Uri(Configuration["ServiceUrls:ProductAPI"])
                 );
+            services.AddHttpClient<ICartService, CartService>(c =>
+                    c.BaseAddress = new Uri(Configuration["ServiceUrls:CartAPI"])
+                );
             services.AddControllersWithViews();
-
             services.AddAuthentication(options =>
             {
                 options.DefaultScheme = "Cookies";
                 options.DefaultChallengeScheme = "oidc";
             })
                 .AddCookie("Cookies", c => c.ExpireTimeSpan = TimeSpan.FromMinutes(10))
-                .AddOpenIdConnect("oidc", options => 
+                .AddOpenIdConnect("oidc", options =>
                 {
                     options.Authority = Configuration["ServiceUrls:IdentityServer"];
                     options.GetClaimsFromUserInfoEndpoint = true;
