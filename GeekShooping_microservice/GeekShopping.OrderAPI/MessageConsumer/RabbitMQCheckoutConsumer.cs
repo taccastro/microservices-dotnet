@@ -29,7 +29,7 @@ namespace GeekShopping.OrderAPI.MessageConsumer
                 UserName = "guest",
                 Password = "guest"
             };
-            _connection = factory.CreateConnection();
+           _connection = factory.CreateConnection();
             _channel = _connection.CreateModel();
             _channel.QueueDeclare(queue: "checkoutqueue", false, false, false, arguments: null);  
         }
