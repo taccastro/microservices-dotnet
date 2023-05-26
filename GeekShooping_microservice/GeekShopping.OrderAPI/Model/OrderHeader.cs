@@ -1,8 +1,8 @@
-﻿using GeekShopping.OrderAPI.Model.Base;
-using System.Collections.Generic;
+﻿using GeekShopping.MessageBus;
+using GeekShopping.OrderAPI.Model.Base;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using GeekShopping.MessageBus;
 
 namespace GeekShopping.OrderAPI.Model
 {
@@ -54,7 +54,7 @@ namespace GeekShopping.OrderAPI.Model
         public List<OrderDetail> OrderDetails { get; set; }
 
         [Column("payment_status")]
-        public bool PaymentStatus {  get; set; }
+        public bool PaymentStatus { get; set; }
 
         public static explicit operator OrderHeader(BaseMessage v)
         {

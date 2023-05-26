@@ -15,9 +15,9 @@ namespace GeekShopping.ProductAPI.Repository
         public ProductRepository(MySQLContext context, IMapper mapper)
         {
             _context = context;
-            _mapper = mapper;             
+            _mapper = mapper;
 
-        }       
+        }
 
         public async Task<IEnumerable<ProductVO>> FindAll()
         {
@@ -27,12 +27,12 @@ namespace GeekShopping.ProductAPI.Repository
 
         public async Task<ProductVO> FindById(long id)
         {
-            Product product = 
+            Product product =
             await _context.Products.Where(p => p.Id == id)
                 .FirstOrDefaultAsync() ?? new Product();
 
             return _mapper.Map<ProductVO>(product);
-                
+
         }
         public async Task<ProductVO> Create(ProductVO vo)
         {
@@ -48,7 +48,7 @@ namespace GeekShopping.ProductAPI.Repository
             _context.Products.Update(product);
             await _context.SaveChangesAsync();
             return _mapper.Map<ProductVO>(product);
-        }        
+        }
 
         public async Task<bool> Delete(long id)
         {
@@ -68,6 +68,6 @@ namespace GeekShopping.ProductAPI.Repository
             {
                 return false;
             }
-        }              
+        }
     }
 }

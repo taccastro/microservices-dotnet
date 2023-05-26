@@ -1,13 +1,9 @@
 ﻿using GeekShopping.CartAPI.Repository;
 using GeekShopping.OrderAPI.Messages;
-using GeekShopping.OrderAPI.Model;
-using GeekShopping.OrderAPI.RabbitMQSender;
 using Microsoft.Extensions.Hosting;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading;
@@ -56,7 +52,7 @@ namespace GeekShopping.OrderAPI.MessageConsumer
         }
 
         private async Task UpdatePaymentStatus(UpdatePaymentResultVO vo)
-        {         
+        {
             try
             {
                 await _repository.UpdateOrderPaymentStatus(vo.OrderId, vo.Status);

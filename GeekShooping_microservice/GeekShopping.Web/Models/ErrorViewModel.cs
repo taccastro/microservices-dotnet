@@ -1,5 +1,3 @@
-using System;
-
 namespace GeekShopping.Web.Models
 {
     public class ErrorViewModel

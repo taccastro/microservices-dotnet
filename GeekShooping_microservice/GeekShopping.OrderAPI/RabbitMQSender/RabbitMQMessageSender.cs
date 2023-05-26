@@ -23,7 +23,7 @@ namespace GeekShopping.OrderAPI.RabbitMQSender
 
         public void SendMessage(BaseMessage message, string queueName)
         {
-            if(ConnectionExists())
+            if (ConnectionExists())
             {
                 using var channel = _connection.CreateModel();
                 channel.QueueDeclare(queue: queueName, false, false, false, arguments: null);
@@ -64,8 +64,8 @@ namespace GeekShopping.OrderAPI.RabbitMQSender
         }
 
         private bool ConnectionExists()
-        {   
-            if(_connection != null) return true;
+        {
+            if (_connection != null) return true;
             CreateConnection();
             return _connection != null;
         }

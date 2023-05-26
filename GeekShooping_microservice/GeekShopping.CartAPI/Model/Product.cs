@@ -17,7 +17,7 @@ namespace GeekShopping.CartAPI.Model
 
         [Column("price")]
         [Required]
-        [Range(1,10000)]
+        [Range(1, 10000)]
         public decimal Price { get; set; }
 
         [Column("description")]

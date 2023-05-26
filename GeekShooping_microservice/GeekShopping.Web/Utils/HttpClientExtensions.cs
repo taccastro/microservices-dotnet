@@ -1,8 +1,5 @@
-﻿using System;
-using System.Net.Http;
-using System.Net.Http.Headers;
+﻿using System.Net.Http.Headers;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace GeekShopping.Web.Utils
 {
@@ -20,7 +17,7 @@ namespace GeekShopping.Web.Utils
             var dataAsString = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             return JsonSerializer.Deserialize<T>(dataAsString,
                 new JsonSerializerOptions
-                {PropertyNameCaseInsensitive = true});
+                { PropertyNameCaseInsensitive = true });
         }
 
         public static Task<HttpResponseMessage> PostAsJson<T>(
@@ -33,7 +30,7 @@ namespace GeekShopping.Web.Utils
             content.Headers.ContentType = contentType;
             return httpClient.PostAsync(url, content);
         }
-        
+
         public static Task<HttpResponseMessage> PutAsJson<T>(
             this HttpClient httpClient,
             string url,
@@ -44,7 +41,7 @@ namespace GeekShopping.Web.Utils
             content.Headers.ContentType = contentType;
             return httpClient.PutAsync(url, content);
         }
-            
+
 
     }
 }

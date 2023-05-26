@@ -7,7 +7,7 @@ namespace GeekShopping.Email.Model
     [Table("email_logs")]
     public class EmailLog : BaseEntity
     {
-       
+
         [Column("email")]
         public string Email { get; set; }
 

@@ -2,9 +2,6 @@
 using GeekShopping.CouponAPI.Data.ValueObjects;
 using GeekShopping.CouponAPI.Model.Context;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace GeekShopping.CouponAPI.Repository

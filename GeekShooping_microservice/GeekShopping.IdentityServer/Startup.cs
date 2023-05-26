@@ -1,4 +1,3 @@
-using Duende.IdentityServer.AspNetIdentity;
 using Duende.IdentityServer.Services;
 using GeekShopping.IdentityServer.Configuration;
 using GeekShopping.IdentityServer.Initializer;

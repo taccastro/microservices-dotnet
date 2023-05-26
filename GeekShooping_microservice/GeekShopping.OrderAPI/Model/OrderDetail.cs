@@ -10,10 +10,10 @@ namespace GeekShopping.OrderAPI.Model
 
         [ForeignKey("OrderHeaderId")]
         public virtual OrderHeader OrderHeader { get; set; }
-        
+
         [Column("ProductId")]
         public long ProductId { get; set; }
-        
+
         [Column("count")]
         public int Count { get; set; }
 

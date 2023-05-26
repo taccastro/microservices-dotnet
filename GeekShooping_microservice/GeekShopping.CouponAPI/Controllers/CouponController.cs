@@ -1,11 +1,7 @@
 ﻿using GeekShopping.CouponAPI.Data.ValueObjects;
 using GeekShopping.CouponAPI.Repository;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace GeekShopping.CouponAPI.Controllers
@@ -23,7 +19,7 @@ namespace GeekShopping.CouponAPI.Controllers
                 ArgumentNullException(nameof(repository));
         }
 
-        [HttpGet("{couponCode}")]     
+        [HttpGet("{couponCode}")]
         public async Task<ActionResult<CouponVO>> GetCouponByCouponCode(string couponCode)
         {
             var coupon = await _repository.GetCouponByCouponCode(couponCode);

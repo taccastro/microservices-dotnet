@@ -16,7 +16,7 @@ namespace GeekShopping.CartAPI.Repository
 
         public async Task<bool> AddOrder(OrderHeader header)
         {
-            if(header == null) return false;
+            if (header == null) return false;
             await using var _db = new MySQLContext(_context);
             _db.Headers.Add(header);
             await _db.SaveChangesAsync();

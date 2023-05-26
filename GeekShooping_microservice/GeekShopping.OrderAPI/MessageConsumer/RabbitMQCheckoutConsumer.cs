@@ -7,7 +7,6 @@ using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading;
@@ -35,7 +34,7 @@ namespace GeekShopping.OrderAPI.MessageConsumer
             };
             _connection = factory.CreateConnection();
             _channel = _connection.CreateModel();
-            _channel.QueueDeclare(queue: "checkoutqueue", false, false, false, arguments: null);  
+            _channel.QueueDeclare(queue: "checkoutqueue", false, false, false, arguments: null);
         }
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)

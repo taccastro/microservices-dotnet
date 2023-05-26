@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace GeekShopping.Web.Models
+﻿namespace GeekShopping.Web.Models
 {
     public class CartHeaderViewModel
     {
